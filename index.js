@@ -13,7 +13,7 @@ app.use("/Exotica", hotelrouter);
 mongoose
   .connect(
     process.env.MONGODB_URL ||
-      "mongodb+srv://riya_vishwa_981:ujju5363@cluster0.xghz9.mongodb.net/Exotica?retryWrites=true&w=majority",
+      "mongodb+srv://<username>:<password>@cluster0.xghz9.mongodb.net/<DatabaseName>?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

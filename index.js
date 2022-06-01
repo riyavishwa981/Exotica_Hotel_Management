@@ -1,15 +1,21 @@
 const express = require("express");
 const path = require("path");
 var exphbs = require("express-handlebars");
+const mongoose = require("mongoose");
+
 const app = express();
 const port = 5363;
+
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 app.set("views", "views");
+
+
+//middlewear
 const hotelrouter = require(path.join(__dirname, "/routes/route.js"));
-const mongoose = require("mongoose");
 app.use("/Exotica", hotelrouter);
 
+//connection with database
 mongoose
   .connect(
     process.env.MONGODB_URL ||
@@ -26,6 +32,8 @@ mongoose
     console.log(error.message);
   });
 
+
+//to run website on specified port
 app.listen(port, () => {
   console.log(`Server is running at ${port}`);
 });
